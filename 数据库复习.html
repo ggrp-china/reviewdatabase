@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>数据库复习</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<p><strong>目录</strong></p>
+<p><a href="#第1章 概述">第1章 概述</a></p>
+<p><a href="#1.1 DBS概述">1.1 DBS概述</a></p>
+<p><a href="#1.1.1 四个基本概念">1.1.1 四个基本概念</a></p>
+<p><a href="#1.1.2 数据管理的三个阶段">1.1.1 1.1.2 数据管理的三个阶段</a></p>
+<p><a href="#1.1.3 DBS的特点">1.1.3 DBS的特点</a></p>
+<p><a href="#1.2 数据模型">1.2 数据模型</a></p>
+<p><a href="#1.2.1 两类数据模型">1.2.1 两类数据模型</a></p>
+<p><a href="#1.2.2 概念模型">1.2.2 概念模型</a></p>
+<p><a href="#1.2.3 数据模型的组成要素">1.2.3 数据模型的组成要素</a></p>
+<p><a href="#1.2.4 常用的数据模型">1.2.4 常用的数据模型</a></p>
+<p><a href="#1.2.7 关系模型">1.2.7 关系模型</a></p>
+<p><a href="#1.3 数据库系统的结构">1.3 数据库系统的结构</a></p>
+<p><a href="#1.3.1 DBS模式的概念">1.3.1 DBS模式的概念</a></p>
+<p><a href="#1.3.2 DBS的三级模式结构">1.3.2 DBS的三级模式结构</a></p>
+<p><a href="#1.3.3 DB的二级映像功能和数据独立性">1.3.3 DB的二级映像功能和数据独立性</a></p>
+<p><a href="#第2章 关系数据库">第2章 关系数据库 </a></p>
+<p><a href="#2.1 关系数据结构及形式化定义">2.1 关系数据结构及形式化定义</a></p>
+<p><a href="#2.1.1 关系">2.1.1 关系</a></p>
+<p><a href="#2.2 关系操作">2.2 关系操作</a></p>
+<p><a href="#2.3 关系的完整性">2.3 关系的完整性</a></p>
+<p><a href="#2.3.1 实体的完整性">2.3.1 实体的完整性</a></p>
+<p><a href="#2.3.2 参照完整性">2.3.2 参照完整性</a></p>
+<p><a href="#2.3.3 用户定义完整性">2.3.3 用户定义完整性</a></p>
+<p><a href="#2.4 关系代数">2.4 关系代数</a></p>
+<p><a href="#2.4.1 传统的集合运算">2.4.1 传统的集合运算</a></p>
+<p><a href="#2.4.2 专门的关系运算P53">2.4.2 专门的关系运算P53</a></p>
+<p><a href="#第3章 关系型数据库标准语言SQL">第3章 关系型数据库标准语言SQL</a></p>
+<p><a href="#3.1 SQL概述">3.1 SQL概述</a></p>
+<p><a href="#3.1.3 SQL的基本概念P78">3.1.3 SQL的基本概念P78</a></p>
+<p><a href="#3.3 数据定义">3.3 数据定义</a></p>
+<p><a href="#3.3.1 模式的定义和删除">3.3.1 模式的定义和删除</a></p>
+<p><a href="#3.3.2 基本表的定义、删除与修改">3.3.2 基本表的定义、删除与修改</a></p>
+<p><a href="#3.3.3 索引的建立与删除">3.3.3 索引的建立与删除</a></p>
+<p><a href="#3.4 数据查询">3.4 数据查询</a></p>
+<p><a href="#3.4.1 单表查询">3.4.1 单表查询</a></p>
+<p><a href="#3.4.2 连接查询">3.4.2 连接查询</a></p>
+<p><a href="#3.4.3 嵌套查询">3.4.3 嵌套查询（nested query）凸显结构化</a></p>
+<p><a href="#3.4.4 集合查询">3.4.4 集合查询</a></p>
+<p><a href="#3.4.5 基于派生表的查询">3.4.5 基于派生表的查询</a></p>
+<p><a href="#3.4.6 select语句的一般格式">3.4.6 select语句的一般格式</a></p>
+<p><a href="#3.5 数据更新">3.5 数据更新</a></p>
+<p><a href="#3.5.1 插入数据">3.5.1 插入数据</a></p>
+<p><a href="#3.5.2 修改数据">3.5.2 修改数据</a></p>
+<p><a href="#3.5.3 删除数据">3.5.3 删除数据</a></p>
+<p><a href="#3.6 空值的处理">3.6 空值的处理</a></p>
+<p><a href="#3.7 视图">3.7 视图</a></p>
+<p><a href="#3.7.1 定义视图">3.7.1 定义视图</a></p>
+<p><a href="#3.7.2 查询视图">3.7.2 查询视图</a></p>
+<p><a href="#3.7.3 更新视图">3.7.3 更新视图</a></p>
+<p><a href="#3.7.4 视图的作用">3.7.4 视图的作用</a></p>
+<p><a href="#第4章 数据库安全性">第4章 数据库安全性</a></p>
+<p><a href="#4.2 DB安全性控制">4.2 DB安全性控制</a></p>
+<p><a href="#4.2.1 用户身份鉴别">4.2.1 用户身份鉴别</a></p>
+<p><a href="#4.2.2 存取控制">4.2.2 存取控制</a></p>
+<p><a href="#4.2.3 自主存取控制方法">4.2.3 自主存取控制方法</a></p>
+<p><a href="#4.2.4 授权：授予与收回">4.2.4 授权：授予与收回</a></p>
+<p><a href="#%E7%AC%AC5%E7%AB%A0">第5章</a></p>
+<p><a href="#5.3 用户定义的完整性">5.3 用户定义的完整性</a></p>
+<p><a href="#5.3.1 属性上的约束条件(P163)">5.3.1 属性上的约束条件(P163)</a></p>
+<p><a href="#5.3.2 元组上的约束条件的定义">5.3.2 元组上的约束条件的定义</a></p>
+<p><a href="#第7章 数据库设计">第7章 数据库设计</a></p>
+<p><a href="#7.1 数据库设计概述">7.1 数据库设计概述</a></p>
+<p><a href="#7.1.3 数据库设计基本步骤">7.1.3 数据库设计基本步骤</a></p>
+<p><a href="#7.3 概念结构设计">7.3 概念结构设计</a></p>
+<p><a href="#7.4 逻辑结构设计">7.4 逻辑结构设计</a></p>
+<p><a href="#7.4.1 ER图向关系模型的转换">7.4.1 ER图向关系模型的转换</a></p>
+<p><a href="#7.6 DB的实施和维护">7.6 DB的实施和维护</a></p>
+<p><a href="#7.6.1 数据载入和应用程序的调试">7.6.1 数据载入和应用程序的调试</a></p>
+<p><a href="#第9章 关系查询处理和查询优化">第9章 关系查询处理和查询优化</a></p>
+<p><a href="#9.1 关系DBS的查询处理">9.1 关系DBS的查询处理</a></p>
+<p><a href="#1. 查询分析">1. 查询分析</a></p>
+<p><a href="#2. 查询检查">2. 查询检查</a></p>
+<p><a href="#3. 查询优化">3. 查询优化</a></p>
+<p><a href="#4. 查询执行">4. 查询执行</a></p>
+<p><a href="#9.2 关系DBS的查询优化">9.2 关系DBS的查询优化</a></p>
+<p><a href="#9.2.1 查询优化概述">9.2.1 查询优化概述</a></p>
+<p><a href="#9.3 代数优化">9.3 代数优化</a></p>
+<p><a href="#9.3.2 查询树的启发式优化">9.3.2 查询树的启发式优化</a></p>
+<p><a href="#第10章 数据库恢复技术">第10章 数据库恢复技术</a></p>
+<p><a href="#10.1 事务的基本概念">10.1 事务的基本概念</a></p>
+<p><a href="#1.%E4%BA%8B%E5%8A%A1">1.事务</a></p>
+<p><a href="#2.%E4%BA%8B%E5%8A%A1%E7%9A%84ACID%E7%89%B9%E6%80%A7">2.事务的ACID特性</a></p>
+<p><a href="#10.3 故障的种类">10.3 故障的种类</a></p>
+<p><a href="#1. 事务内部的故障">1. 事务内部的故障</a></p>
+<p><a href="#2. 系统故障">2. 系统故障</a></p>
+<p><a href="#3. 介质故障">3. 介质故障</a></p>
+<p><a href="#4. 计算机病毒">4. 计算机病毒</a></p>
+<p><a href="#10.4 恢复的实现技术">10.4 恢复的实现技术</a></p>
+<p><a href="#10.4.2 日志文件">10.4.2 日志文件</a></p>
+<p><a href="#%E8%AF%95%E9%A2%98%3A">试题:</a></p>
+<hr />
+<h1 id="第1章 概述">第1章 概述</h1>
+<h2 id="1.1 DBS概述">1.1 DBS概述</h2>
+<h3 id="1.1.1 四个基本概念">1.1.1 四个基本概念</h3>
+<p>数据data：描述事物的<strong>符号记录</strong>。<br />
+数据库DB：长期存储在计算机内的、有组织的、可共享的大量数据集合。<br />
+数据库管理系统DBMS：是位于用户与操作系统之间的具有数据定义、数据操纵、数据库的运行管理、数据库的建立和维护功能的一层数据管理软件。<br />
+数据库系统DBS：在计算机系统中引入数据库后的系统，一般由数据库、数据库管理系统(及其开发工具)、应用系统、数据库管理员<strong>DBA</strong>和用户构成。<br />
+DDL：数据定义语言(Data Definition Launguage)。<br />
+DML：数据操纵语言(Data Manipulation Launguage)。  </p>
+<h3 id="1.1.2 数据管理的三个阶段">1.1.2 数据管理的三个阶段</h3>
+<table>
+<thead>
+<tr>
+	<th></th>
+	<th>人工管理阶段</th>
+	<th>文件系统阶段</th>
+	<th>数据库系统阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>处理方式</td>
+	<td>批处理</td>
+	<td>联机实时处理，批处理</td>
+	<td>有数据库管理系统</td>
+</tr>
+<tr>
+	<td>面向对象</td>
+	<td>某一个应用程序</td>
+	<td>某一个应用</td>
+	<td>现实世界</td>
+</tr>
+<tr>
+	<td>数据共享程度</td>
+	<td>无共享，冗余度极大</td>
+	<td>共享性差，冗余度大</td>
+	<td>共享性高，冗余度小</td>
+</tr>
+<tr>
+	<td>独立性</td>
+	<td>不独立，完全依赖程序</td>
+	<td>独立性差</td>
+	<td>具有高度的物理独立性和一定的逻辑独立性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1.1.3 DBS的特点">1.1.3 DBS的特点</h3>
+<p>1. <strong>数据结构化</strong></p>
+<p>2. 数据<strong>共享性高</strong>、冗余度低<strong>且易扩充</strong></p>
+<p>3. 数据独立性高</p>
+<blockquote>
+<p>物理独立性：应用程序与数据库中<strong>数据的物理存储</strong>是相互独立的</p>
+<p>逻辑独立性：应用程序与<strong>数据库的逻辑结构</strong>是相互独立的，数据的逻辑结构改变时用户程序可以不变  
+</p>
+<p>数据的独立性是由<strong>二级映像决定的</strong></p>
+</blockquote>
+<p>4. 数据由DBMS统一管理和控制</p>
+<h2 id="1.2 数据模型">1.2 数据模型</h2>
+<h3 id="1.2.1 两类数据模型">1.2.1 两类数据模型</h3>
+<blockquote>
+<p>1. 概念模型（信息模型） 按用户的观点对数据和信息建模，用于DB设计</p>
+<p>2. 逻辑和物理模型  逻辑模型用于DBMS的实现 物理模型是对底层的抽象</p>
+</blockquote>
+<h3 id="1.2.2 概念模型">1.2.2 概念模型</h3>
+<p>1. 实体：客观存在并可相互区别的事物</p>
+<p>2. 属性：实体所具有的某一特性称为属性</p>
+<p>3. 码：唯一标识实体的属性集</p>
+<p>4. 实体型：同类实体，比如学生</p>
+<p>5. 实体集：同一类型的集合，比如全体学生</p>
+<p>6. 联系：实体内部联系，或者实体之间的联系，如一对一，一对多和多对多</p>
+<p>ER图：概念模型的表示方法</p>
+<h3 id="1.2.3 数据模型的组成要素">1.2.3 数据模型的组成要素</h3>
+<p>1. 数据结构（静态特性）</p>
+<p>2. 数据操作（动态特性）</p>
+<p>3. 数据的完整性约束条件</p>
+<h3 id="1.2.4 常用的数据模型">1.2.4 常用的数据模型</h3>
+<ul>
+<li>层次模型</li>
+<li>网状模型</li>
+<li>关系模型</li>
+<li>面向对象数据模型</li>
+<li>对象关系数据模型</li>
+<li>半结构化数据模型</li>
+</ul>
+<h3 id="1.2.7 关系模型">1.2.7 关系模型</h3>
+<p>1. 关系模型的数据结构</p>
+<blockquote>
+<ol>
+<li>关系：二维表</li>
+<li>元组：行</li>
+<li>属性：列</li>
+<li>码：表里的某个属性组，它可以唯一确定一个元组</li>
+<li>域：一组具有相同数据类型的集合</li>
+<li>分量：行中的某个值</li>
+<li>关系模式：对关系的描述</li>
+</ol>
+</blockquote>
+<p><strong>关系的每一个分量必须是一个不可分的数据项，即不允许表里有表</strong></p>
+<p>2. 数据操纵和完整性约束</p>
+<p>3. 优缺点</p>
+<blockquote>
+<ol>
+<li>具有严谨的数学基础</li>
+<li>概念单一，数据结构简单、清晰，用户易懂</li>
+<li>数据独立性、安全保密性、简化开发工作</li>
+<li>缺点：查询效率不如格式化数据模型，需要查询优化</li>
+</ol>
+</blockquote>
+<h2 id="1.3 数据库系统的结构">1.3 数据库系统的结构</h2>
+<h3 id="1.3.1 DBS模式的概念">1.3.1 DBS模式的概念</h3>
+<blockquote>
+<p>模式是DB中<strong>全体数据</strong>的逻辑结构和特征的描述，它仅仅涉及型的描述，不涉及具体的值（实例），模式是相对稳定的，而实例是相对变动的，模式反映的是数据的结构和联系，实例反映的是DB某一时刻的状态</p>
+</blockquote>
+<h3 id="1.3.2 DBS的三级模式结构">1.3.2 DBS的三级模式结构</h3>
+<p>1. 外模式（external schema，用户模式）：用户能看到、使用的<strong>局部</strong>数据的<strong>逻辑结构和特征的描述<strong>，是DB用户的数据视图，是与某一应用有关的数据的逻辑表示。外模式是模式的子集，</strong>根据用户的不同而不同</strong>，一个DB可以有多个外模式。外模式是保障DB安全的有利措施，每个用户只能访问对应外模式中的数据，其余不可见。</p>
+<p>2. 模式（逻辑模式）：DB中<strong>全体数据</strong>的<strong>逻辑结构和特征的描述<strong>，是所有用户的</strong>公共数据视图</strong>；是DB模式结构的<strong>中间层</strong>，不涉及物理存储，与应用程序也无关。<strong>一个DB只有一个模式</strong>。</p>
+<p>3. 内模式（internal schema，存储模式）：一个DB只有一个内模式，是物理结构</p>
+<p><strong>注：</strong></p>
+<blockquote>
+<p>一个关系型DBMS的实例（instance）中可建立多个数据库，<strong>一个DB中可建立多个模式（包括不同级的模式）</strong>，一个模式下通常包括多个table、视图、索引等数据库对象。</p>
+<p>DBMS提供<strong>模式DDL</strong>来定义模式，<strong>外模式DDL</strong>来定义外模式</p>
+</blockquote>
+<h3 id="1.3.3 DB的二级映像功能和数据独立性">1.3.3 DB的二级映像功能和数据独立性</h3>
+<p>为了实现三种模式的联系和转换，DBMS提供了两层映像，正因如此，保证了DBS中的数据有较高的独立性</p>
+<p>1. 外模式/模式映像</p>
+<p>对于每一个外模式，DBS都有一个外模式/模式映像，它定义了该外模式和模式之间的对应关系，这些映像通常包含在各自外模式的描述中。<strong>当模式改变时</strong>，由数据库管理员对映像做相应改变，可使外模式保持不变，而应用程序是根据外模式编写的，所以也不用改，从而保证了数据和程序的逻辑独立性。</p>
+<p>2. 模式/内模式映像</p>
+<p>DB中只有一个模式和一个内模式，所以模式/内模式映像是<strong>唯一的。定义了数据全局逻辑结构二号存储结构之间的对应关系。当存储结构改变时</strong>，由数据库管理员对映像做相应改变，可使模式保持不变，从而应用程序不用改，从而保证了数据和程序的物理独立性。</p>
+<p>注：</p>
+<blockquote>
+<p>设计DB模式结构时应首先确定数据库的全局逻辑结构，即模式（P30）</p>
+<p>设计外模式时应充分考虑应用的扩充性（P30）</p>
+</blockquote>
+<h1>第2章 关系数据库</h1>
+<h2>2.1 关系数据结构及形式化定义</h2>
+<h3>2.1.1 关系</h3>
+<p>1. 域 一组具有相同数据类型的值的集合； 一个域允许的不同取值的个数成为基数</p>
+<p>2. 笛卡儿积  每个域的基数相乘=行数</p>
+<p>3. 关系</p>
+<blockquote>
+<ol>
+<li>候选码，选其中一个作为主码</li>
+<li>全码</li>
+<li>关系有三种类型：基本关系、视图表、查询表</li>
+</ol>
+</blockquote>
+<p>基本关系具有6条性质：
+.p
+1.  列是同质的
+2.   </p>
+<h2>2.2 关系操作</h2>
+<p>增删改查</p>
+<p>查又分为：</p>
+<p>基本操作是：选择、投影、并、差、笛卡儿积</p>
+<h2>2.3 关系的完整性</h2>
+<h3>2.3.1 实体的完整性</h3>
+<p>主码不能为空，若主码有多个，则都不能空</p>
+<h3>2.3.2 参照完整性</h3>
+<p>外码</p>
+<p>参照关系</p>
+<p>被参照关系</p>
+<p>参照和被参照关系可以是同一个</p>
+<p>外码不一定要与相应的主码同名</p>
+<h3>2.3.3 用户定义完整性</h3>
+<h2>2.4 关系代数</h2>
+<h3>2.4.1 传统的集合运算</h3>
+<p>1. 并</p>
+<p>2. 差</p>
+<p>3. 交</p>
+<p>4. 笛卡儿积（用R X S表示）</p>
+<h3>2.4.2 专门的关系运算P53</h3>
+<p>1. 选择  针对行</p>
+<p>2. 投影  针对列，也可能取消某些行，避免重复</p>
+<p>3. 连接</p>
+<blockquote>
+<p>等值连接：从广义笛卡儿积中选取A、B<strong>属性值</strong>相等的元组（注意相等的不能合并）</p>
+<p>自然连接：特殊的等值连接，将相等的合并了（它要求两个关系中进行比较的<strong>分量</strong>必须是相同的属性组，并且要在结果中把重复的属性去掉）</p>
+<p>非等值连接：从广义笛卡儿积中选择符合条件的</p>
+<p>在连接中被舍弃的元组为悬浮元组</p>
+<p>若不舍弃，则为外连接</p>
+<p>不舍弃左边关系中的，就叫左外连接</p>
+</blockquote>
+<h1>第3章 关系型数据库标准语言SQL</h1>
+<h2>3.1 SQL概述</h2>
+<h3>3.1.3 SQL的基本概念P78</h3>
+<blockquote>
+<p>外模式：包括若干视图和部分基本表，基本表是本身独立存在的表，一个关系就对应一个基本表，一个或多个基本表对应一个存储文件；视图是从一个或多个基本表导出的表，本身不独立存储在数据库中，即数据库中只存放视图的定义而不存放其数据，数据仍存在基本表中，因此视图是虚表，视图上可以再定义视图。</p>
+<p>模式：包括若干基本表</p>
+<p>内模式：包含若干存储文件，<strong>存储文件的逻辑结构组成了关系数据库的内模式</strong>，存储文件的物理结构对用户是隐蔽的</p>
+</blockquote>
+<p><code>首先进入mysql文件夹下的bin目录，然后输入MySQL -u+用户名 -p然后输入密码，AC  musk  spacexjack  密码忘了Yang  。。。 create user 用户名 identified by '密码'; 授予权限： grant insert,update,delete on student_course to musk; 撤回权限： revoke all on student from musk;//mysql只能一次撤一个对象</code></p>
+<h2>3.3 数据定义</h2>
+<h3>3.3.1 模式的定义和删除</h3>
+<h3>3.3.2 基本表的定义、删除与修改</h3>
+<p>1. 定义基本表</p>
+<p><code>create table 表名(sno char(4) primary, sname char(6) unique, foreign key(Cno) references Course(Cno)); 跟在列名后面的是列级完整性约束 单独定义的是表级   create table SC(primary key(Sno, Cno), Cno char(4), Sno char(3), grade smallint); 如果完整性约束条件涉及多个属性列，则必须定义在表级，如上所示</code></p>
+<p>2. 数据类型</p>
+<p>3. 模式与表</p>
+<p><strong>4. 修改基本表*************************************</strong></p>
+<p><code>cpp
+1. 删除列alter table 表名 drop column 属性名 cascade/restrict    //column是列的意思注：后面的条件可不写，默认restrict；restrict是指删除是有条件的，所删除的属性不能被其他表的约束所引用，不能有视图、触发器、存储过程或函数； cascade是指删除没有条件，删除的同时，所有相关的对象都将删除 2. 增加列alter table 表名 add column 属性名 数据类型;如：alter table student add column Sname char(6);//mqsql里column可不写 修改列的数据类型//主码好像改不了,外码似乎也是alter table 表名 change 原列名 现列名 数据类型; 3. 删除主键约束alter table student drop primary key;4. 增加主键约束alter table student add primary key(sno);//注意：mysql一张表里只能有一个主键 5. 设置唯一性约束alter table student add unique（sname）;//注意：主键本身就是唯一的 6.设置外键约束（注意外键一定要是所参考的表（student）的主键，不然报错）alter table student_course add foreign key(sno) references student(sno);  7. 元组上的约束条件 P164    a. 检查约束check //mysql不支持检查约束，但写上不会报错    alter table student_course add constraint check(score &gt;= 0 and score &lt;= 100); 8. 设置默认约束alter table 表名 change 原列名 现列名 数据类型 default 默认值;如：alter table student change entime entime date default '2002-09-01';  9. 删除表drop table stu cascade/restrict;</code></p>
+<h3>3.3.3 索引的建立与删除</h3>
+<h2>3.4 数据查询</h2>
+<p>数据查询是数据库的核心操作</p>
+<h3>3.4.1 单表查询</h3>
+<p>1. 选择表中的若干列</p>
+<p><code>cpp
+1. 查询指定列select 属性列,属性列,··· from 表名;//各列的顺序可以和原表不一样2. 查询所有列select * from 表名;3. 查询经过计算的值select Sname,2014-Sage from 表名; 属性列还可以是算术表达式、字符串常量、函数等。如：select sname,'year of birth',2014-sage,LOWER(sdept) from student;//小写字母表示系名 还可以通过指定别名来改变查询结果的列标题，例如有些含有算术表达式、函数、常量的列名就可指定别名如：select sname NAME,'yaer of birth' BIRTH,2014-sage BIRTHDAY from student;</code></p>
+<p>2. 选择表中的若干元组（行）</p>
+<p><code>cpp
+1. 消除取值重复的行（两个不相同的元组投影到指定列后，可能会变成相同的行）使用distinct消除:select distinct sno from sc; 2. 查询满足条件的元组     a. 比较大小    b. 确定范围    c. 确定集合    d. 字符匹配        select * from student where Sno like '12313';//like等价于=        //如果like后面的匹配串中不含通配符(%和_)，则可用=取代like，用!=或&lt;&gt;取代not like        select * from student where Sname like '刘%';//有通配符必须用like        //通配符%代表任意长度（包括0）的字符串，_表示任意单个字符        select * from student where Sname like '欧阳_';        select * from student where Sname like '_阳%';//第二个字为阳的        select * from student where Sname not like '杨%';                //如果要查询的字符串本身有通配符，要用escape转义符        select Cno,Credit from Course where Cname like 'DB\_Design' escape'\';        //escape\表示\为换码字符，这样跟在\后面的字符不再具有通配符的含义    e. 涉及空值的查询    f. 多重条件查询</code></p>
+<p>3. order by 子句（排序用）</p>
+<p><code>cpp
+select Sno,Grade from SC where Cno = '3' order by Grade desc;desc: 降序asc: 升序</code></p>
+<p>4. 聚集函数</p>
+<blockquote>
+<ol>
+<li>count(*)//统计元组个数</li>
+<li>count(distinct 列名)//统计一列中值的个数，取消重复值</li>
+<li>sum(distinct 列名)//计算一列值的总和</li>
+<li>max(distinct 列名)//计算一列中的最大值</li>
+<li>avg(列名)//平均值</li>
+</ol>
+<p>当聚集函数遇到空值时，除count(*)，都跳过空值</p>
+<p>where 子句中不能用聚集函数</p>
+</blockquote>
+<p>5. group by子句（分组用）</p>
+<blockquote>
+<p>将查询结果按某一列或多列的值分组，值相等的一组</p>
+</blockquote>
+<p><code>objectivec
+1.求各个课程号及相应的选课人数select Cno,count(Sno) from sc group by Cno;  如果分组后还要筛选，用having语句select Cno,count(Sno) from sc group by Cnohaving count(*) &gt; 3;</code></p>
+<blockquote>
+<p>where语句和having语句的区别：</p>
+<p>where语句不能用聚集函数，作用于基本表或视图；having短语作用于组，也就是group</p>
+</blockquote>
+<h3>3.4.2 连接查询</h3>
+<p>1. 等值与非等值连接查询</p>
+<p><code>select stu.sno, snamefrom stu,scwhere stu.sno = sc.sno and sc.cno'2'; //sno在两个表都有，所以要加前缀</code></p>
+<p>2. 自身连接</p>
+<p><code>查询每一门课的间接先修课（先修课的先修课）</code></p>
+<p>3. 外连接</p>
+<p><code>左外连接select student.sno, sname, ssex, sage, sdept, cno, gradefrom student LEFT OUTER JOIN SC ON (student.sno = sc.sno);</code></p>
+<p>4<strong>. 多表连接</strong></p>
+<p><code>查询每个学生的学号、姓名、选修的课程名、成绩select student.sno, Sname, Cname, Gradefrom student, sc, coursewhere student.sno = sc.sno AND sc.cno = course.cno;</code></p>
+<h3>3.4.3 嵌套查询（nested query）凸显结构化</h3>
+<blockquote>
+<p>子查询的select语句不能用order by子句，order by只能对最终查询结果排序</p>
+</blockquote>
+<p>1. <strong>带有IN谓词的子查询</strong></p>
+<p><code>查询和刘成在同一个系学习的学生SELECT sname,sno,sdept FROM student WHERE sdept IN (select sdept from student where sname = '刘成');  在此例中，IN可以用=替换</code></p>
+<p>子查询的条件不依赖与父查询，称不相关子查询(相关子查询（相关嵌套查询）反之)</p>
+<p><strong>2. 带有比较运算符的子查询</strong></p>
+<p><code>找出每个学生超过他自己选秀课程平均成绩的课程号 SELECT Sno,Cno FROM SC xWHERE Grade &gt;= (SELECT AVG(Grade)                FROM                WHERE y.Sno = x.Sno);</code></p>
+<p><strong>3.带有any（some）或all谓词的子查询</strong></p>
+<p><strong>4. 带有exists谓词的子查询</strong></p>
+<h3>3.4.4 集合查询</h3>
+<h3>3.4.5 基于派生表的查询</h3>
+<h3>3.4.6 select语句的一般格式</h3>
+<h2>3.5 数据更新</h2>
+<h3>3.5.1 插入数据</h3>
+<p><strong>1. 插入元组</strong></p>
+<p><code>insert into 表名（属性列，···，···） values（对应的值，···，···）； 注意：1. 没有出现的属性列，将自动取空值；但说明了not null 的属性列不能取空值，否则出错      2. 如果没有指明任何属性列， 则新插入的必须在每个属性列上都有值（如果为null要显式给出），且顺序要和表的属性列顺序一样      3.值如果为字符串常数，要用单引号括起来，数字不用      4. 可以把属性列显式的置为NULL 例：insert into student（Sno，Sname，Ssex） values（'29193','李明','男'）;   一次同时插入多条数据：insert into 表名（属性列，···，···） values（对应的值，···，···），（对应的值2，···，···），（对应的值3，···，···），···；</code></p>
+<p><strong>2. <strong>插</strong>入子查询结果</strong></p>
+<blockquote>
+<p>子查询既可以嵌套在select语句中，也可以用在insert语句中用以生成要插入的数据</p>
+</blockquote>
+<p><code>insert into dept_age(sdept, avg_age) select sdept, avg(sage) from stu group by sdept;</code></p>
+<h3>3.5.2 修改数据</h3>
+<p>1. 修改某一个元组的值</p>
+<p><code>update 表名 set 属性名 = '' where 属性名 = ''；如：update student set Sage = 16 where Sno = '201215121'；</code></p>
+<p>2. 修改多个元组的值</p>
+<p><code>update 表名 set Sage = Sage + 1；</code></p>
+<p>3. 带子查询的修改语句</p>
+<p><code>update SC set Grade = 0 where Sno in (select Sno from stu where Sdept 'CS');</code></p>
+<h3>3.5.3 删除数据</h3>
+<p>1. 删除一个元组</p>
+<p><code>delete from 表名 where 属性名 = ''；</code></p>
+<p>2. 删除多个元组</p>
+<p><code>Delphi
+delete from 表名；//删除所有，该表成为空表</code></p>
+<p>3. 带子查询的删除语句</p>
+<p><code>delete from SC where Sno in (select Sno from stu where Sdept = 'CS');</code></p>
+<h2>3.6 空值的处理</h2>
+<h2>3.7 视图</h2>
+<h3>3.7.1 定义视图</h3>
+<p>1. 建立视图</p>
+<blockquote>
+<p>with check option 表示对视图操作时要满足视图定义中的条件(比如下例中的sdept=’IS‘)</p>
+<p>组成视图的列名要么全部省略，要么全部指定</p>
+<p>以下三种情况必须全部指定：</p>
+<ol>
+<li>某个目标列是函数表达式</li>
+<li>有同名列</li>
+<li>需要更合适的名字</li>
+</ol>
+</blockquote>
+<p><code>create view IS_student(sno,sname,sage)asselect sno,sname,sagefrom studentwhere sdept = 'IS';</code></p>
+<blockquote>
+<p>若一个视图是从单个基本表导出，且只去掉了某些行列，但保留了主码，称这类视图为行列子集视图</p>
+<p>带虚拟列（派生属性，在基本表中不存在）的视图称为带表达式的视图</p>
+<p>带有聚集函数和group by 子句的查询来定义的视图称为分组视图</p>
+</blockquote>
+<p>2. 删除视图</p>
+<p><code>drop view IS_stu cascade;</code></p>
+<blockquote>
+<p>cascade表示把由该视图导出的所有视图都删除</p>
+<p>当基本表删除后，视图的定义还在，必须用删除视图语句显式删除</p>
+</blockquote>
+<h3>3.7.2 查询视图</h3>
+<blockquote>
+<p>视图消解：把视图的查询转换为对基本表的查询</p>
+</blockquote>
+<h3>3.7.3 更新视图</h3>
+<h3>3.7.4 视图的作用</h3>
+<h1>第4章 数据库安全性</h1>
+<h2>4.2 DB安全性控制</h2>
+<h3>4.2.1 用户身份鉴别</h3>
+<ol>
+<li>静态口令鉴别   密码</li>
+<li>动态口令鉴别   每次鉴别时都需使用动态产生的新口令登陆</li>
+<li>生物特征鉴别</li>
+<li>智能卡鉴别</li>
+</ol>
+<h3>4.2.2 存取控制</h3>
+<ol>
+<li>自主存取控制</li>
+<li>强制存取控制  每个数据库对象被标以一定的密级</li>
+</ol>
+<h3>4.2.3 自主存取控制方法</h3>
+<blockquote>
+<p>用户权限由 数据库对象和操作类型 组成</p>
+</blockquote>
+<h3>4.2.4 授权：授予与收回</h3>
+<p><strong>1. grant</strong></p>
+<blockquote>
+<p>一些权限：</p>
+<p>基本表和视图：select, insert, update, delete references, all privileges</p>
+</blockquote>
+<p><code>grant select on table student to u1 with grant option;grant all privileges on table student,course to u2,u3;grant select on table stu to public;grant update(Sno),select on table stu to u4;</code></p>
+<p><strong>2. revoke</strong></p>
+<p><code>revoke update(Sno) on table stu from u4;revoke select on table sc from public;revoke insert on table sc from u5 cascade;</code></p>
+<h1>第5章</h1>
+<h2>5.3 用户定义的完整性</h2>
+<h3>5.3.1 属性上的约束条件(P163)</h3>
+<p>1. 属性上约束条件的定义</p>
+<blockquote>
+<p>包括：</p>
+<p>1. not null</p>
+<p>2. unique</p>
+<p>3. check</p>
+</blockquote>
+<h3>5.3.2 元组上的约束条件的定义</h3>
+<p>在创建表时可用check短语定义</p>
+<p><code>create table 表名(sno char(4) primary, sname char(6) unique, sex char(2),foreign key(Cno) references Course(Cno),check(sex = '女' OR Sname not like'Ms.%')); 男性名字不能以Ms.开头</code></p>
+<h1>第7章 数据库设计</h1>
+<h2>7.1 数据库设计概述</h2>
+<h3>7.1.3 数据库设计基本步骤</h3>
+<p>需求分析、概念结构设计、逻辑结构设计、物理结构设计、数据库实施、数据库运行和维护</p>
+<h2>7.3 概念结构设计</h2>
+<h2>7.4 逻辑结构设计</h2>
+<h3>7.4.1 ER图向关系模型的转换</h3>
+<h2>7.6 DB的实施和维护</h2>
+<h3>7.6.1 数据载入和应用程序的调试</h3>
+<h1>第9章 关系查询处理和查询优化</h1>
+<h2>9.1 关系DBS的查询处理</h2>
+<h3>1. 查询分析</h3>
+<h3>2. 查询检查</h3>
+<h3>3. 查询优化</h3>
+<h3>4. 查询执行</h3>
+<h2>9.2 关系DBS的查询优化</h2>
+<h3>9.2.1 查询优化概述</h3>
+<blockquote>
+<p>查询优化的优点不仅在于用户不必考虑如何最好的表达查询以获得较高的效率，而且在于系统能比用户程序的“优化”做的更好，这是因为：</p>
+<ol>
+<li></li>
+</ol>
+</blockquote>
+<h2>9.3 代数优化</h2>
+<h2>9.3.2 查询树的启发式优化</h2>
+<blockquote>
+<p>风格恢复</p>
+</blockquote>
+<h1>第10章 数据库恢复技术</h1>
+<h2>10.1 事务的基本概念</h2>
+<h3>1.事务</h3>
+<blockquote>
+<p>事务：是用户定义的数据库操作序列，这些操作要么全做，要么全不做，是一个不可分割的工作单位</p>
+</blockquote>
+<p>在sql中，定义事务的语句有三条：</p>
+<ol>
+<li>begin transaction 表示开始</li>
+<li>commit 提交</li>
+<li>rollback 撤销</li>
+</ol>
+<h3>2.事务的ACID特性</h3>
+<ol>
+<li>原子性 atomicity</li>
+<li>一致性 consistency 和原子性密切相关   一致性状态（正常）   中断（不一致） 所以要保证原子性</li>
+<li>隔离性 isolation 并发执行的各个事务之间不能干扰</li>
+<li>持续性 durability 永久性 事务一旦提交，改变就是永久性的，其他操作不能影响其结果</li>
+</ol>
+<blockquote>
+<p>ACID特性可能遭到破坏的因素：</p>
+<p>1. 多个事务并行运行，不同事务的操作交叉执行；</p>
+<p>2. 事务在运行过程中被强行停止。</p>
+</blockquote>
+<h2>10.3 故障的种类</h2>
+<h3>1. 事务内部的故障</h3>
+<p>非预期的，不能有由应用程序处理</p>
+<p>发生后需要  事务撤销</p>
+<h3>2. 系统故障</h3>
+<p>断电、死机</p>
+<p>系统重启后，不仅要撤销所有未完成的事务，还要重做所有已提交的事务</p>
+<h3>3. 介质故障</h3>
+<p>硬故障 磁盘损坏、磁头碰撞、瞬间强磁场干扰</p>
+<h3>4. 计算机病毒</h3>
+<blockquote>
+<p>总结，各类故障对DB的影响有两种：</p>
+<p>1. 数据库本身被破坏</p>
+<p>2. 没破坏，但数据不对了</p>
+<p>恢复的原理：冗余</p>
+</blockquote>
+<h2>10.4 恢复的实现技术</h2>
+<h3>10.4.2 日志文件</h3>
+<blockquote>
+<p>用来记录事务对数据库的更新操作的文件</p>
+<p>日志文件的作用：P299</p>
+<ol>
+<li></li>
+</ol>
+</blockquote>
+<p>两种：</p>
+<p>1. 以记录为单位的</p>
+<p>需要记录：</p>
+<blockquote>
+<p>1. 各个事务的开始</p>
+<p>2. ················结束</p>
+<p>3. ················所有更新操作</p>
+<p>一个事务就是一个日志记录</p>
+<p>每个日志记录包括：</p>
+<p>1.</p>
+</blockquote>
+<p>2. 以数据块为单位的</p>
+<h1>试题:</h1>
+<p><strong>什么是数据库的再组织和重构造？为什么要进行数据库的再组织和重构造？</strong><br />
+[参考答案 ] 答：数据库的再组织是指：按原设计要求重新安排存储位置、回收垃圾、减少指针链等， 以提高系统性能。 数据库的重构造则是指部分修改数据库的模式和内模式， 即修改原设计的逻辑和物理结构。数据库的再组织是不修改数<br />
+据库的模式和内模式的。 进行数据库的再组织和重构造的原因： 数据库运行一段时间后，由于记录不断 增、删、改，会使数据库的物理存储情况变坏，降低了数 据 的 存 取 效 率 ，数 据库 性能 下 降 ， 这 时 DBA 就 要 对 数 据库 进行 重组织。 DBMS一般都提供用于数据重组织的实用程序。数据库应用环境常常发生变化，如增加新的应用或新的实体， 取消了某些应用， 有的实体与实体间的联系也发生了变化等， 使原有的数据库设计不能满足新的需求，需要调整数据库的模式和内模式。这就要进行数据库重构造</p>
+<p><strong>什么是检查点记录？</strong><br />
+答：检查点记录是一类<strong>新的日志记录<strong>。它的内容包括：（1）</strong>建立检查点时刻</strong>所有正在执行的事务清单；（2）这些事务的<strong>最近</strong>一个<strong>日志</strong>记录的地址。</p>
+<p><strong>关系系统中，当操作违反实体完整性、参照完整性和用户定义的完整性约束条件时，一般是如何分别进行处理的？</strong><br />
+答:<br />
+对于违反实体完整性和用户定义的完整性的操作一般都采用<strong>拒绝执行<strong>的方式进行处理。而对于违反参照完整性的操作，并不都是简单地拒绝执行，有时要根据应用语义执行</strong>一些附加的</strong>操作，以保证数据库的正确性。</p>
+<p><strong>什么是数据库的审计功能，为什么要提供审计功能？</strong><br />
+答：审计功能是指 DBMS 的<strong>审计模块</strong>在用户对数据库执行操作的同时把所有操作自动记录到系统的审计日志中。因为任何系统的安全保护措施都不是完美无缺的，蓄意盗窃破坏数据的人总可能存在。利用数据库的审计功能， <strong>DBA</strong> 可以<strong>根据审计跟踪的信息<strong>，重现导致数据库现有状况的一系列事件，</strong>找出非法存取数据的</strong>人、时间和内容等。</p>
+<p><strong>哪类视图是可以更新的？哪类视图是不可更新的？各举一例说明。</strong><br />
+答：基本表的<strong>行列子集视图<strong>一般是可更新的。若视图的属性来自集合函数、表达式，则该视图</strong>肯定是</strong>不可以更新的。</p>
+<p><strong>什么是基本表？什么是视图？两者的区别和联系是什么？</strong><br />
+答：基本表是本身独立存在的表， 在 sQL 中一个关系就对应一个表。 视图是从一个或几个基本表导出的表。视图<strong>本身不独立存储在数据库中<strong>，是一个虚表。即数据库中只存放视图的定义而不存放视图对应的数据，</strong>这些数据</strong>仍存放在导出视图的基本表中。 视图在概念上与基本表等同， 用户可以如同基本表那样使用视图，可以在视图上再定义视图</p>
+<p><strong>假设有下面两个关系模式：</strong></p>
+<p>职工（职工号，姓名，年龄，职务，工资，部门号） ，其中职工号为主码；</p>
+<p>部门（部门号，名称，经理名，电话） ，其中部门号为主码。</p>
+<p>用 sQL 语言定义这两个关系模式，要求在模式中完成以下完整性约束条件的定义：</p>
+<p>定义每个模式的<strong>主码</strong>；</p>
+<p>定义<strong>参照完整性</strong>； 定义职工年龄不得超过 60岁。<br />
+答<br />
+CREATE TABLE DEPT<br />
+(Deptno NUMBER(2) <strong>PRIMARY KEY,</strong><br />
+Deptname VARCHAR(10),<br />
+Manager VARCHAR(10),<br />
+PhoneNumber Char(12)<br />
+);</p>
+<p>CREATE TABLE EMP<br />
+(Empno NUMBER(4) <strong>PRIMARY KEY,</strong><br />
+Ename VARCHAR(10),<br />
+Age NUMBER(2),<br />
+CHECK ( Aage&lt;=60),<br />
+Job VARCHAR(9),<br />
+Sal <strong>FLOAT</strong>(6),<br />
+Deptno NUMBER(2),<br />
+<strong>FOREIGN KEY(Deptno)  REFERENCES DEPT(Deptno));</strong></p>
+<p><strong>什么是数据库中的自主存取控制方法和强制存取控制方法？</strong><br />
+答：<br />
+自主存取控制方法：定义各个用户对不同数据对象的存取权限。当用户对数据库访问时首先检查用户的存取权限。防止不合法用户对数据库的存取。<br />
+强制存取控制方法：每一个数据对象被（强制地）标以一定的密级，每一个用户也被（强制地）授予某一个级别的许可证。系统规定只有具有某一许可证级别的用户才能存取某一个密级的数据对象。</p>
+<p><strong>试述实现数据库安全性控制的常用方法和技术。</strong><br />
+答：实现数据库安全性控制的常用方法和技术有：<br />
+( l  ）<strong>用户标识和鉴别<strong>：该方法由系统提供一定的方式让用户标识自己的名字或身份。每次用户要求进入系统时，由系统进行核对，通过鉴定后才提供系统的使用权。<br />
+( 2 ）</strong>存取控制</strong>：通过用户权限定义和合法权检查确保只有合法权限的用户访问数据库，所有未被授权的人员无法存取数据。例如 CZ 级中的自主存取控制 ( DAC ) , Bl  级中的强制存取控制（ MAC ）。<br />
+( 3 ）<strong>视图机制</strong>：为不同的用户定义视图，通过视图机制把要保密的数据对无权存取的用户隐藏起来，从而自动地对数据提供一定程度的安全保护。<br />
+( 4 ）<strong>审计<strong>：建立审计日志，把用户对数据库的所有操作自动记录下来放入审计日志中， DBA 可以利用审计跟踪的信息，重现导致数据库现有状况的一系列事件，找出非法存取数据的人、时间和内容等。<br />
+( 5 ）</strong>数据加密</strong>：对存储和传输的数据进行加密处理，从而使得不知道解密算法的人无法获知数据的内容。</p>
+<blockquote>
+<ol>
+<li>DB具有数据独立性的原因：三级模式结构</li>
+<li>逻辑数据和物理数据的转换由DBMS负责</li>
+<li>在嵌入式 SQL 中，当 SQL 语句中引用宿主语言的程序变量时，程序变量应加前缀：</li>
+<li>在关系代数表达式的查询优化中，不正确的叙述是 尽可能早地执行连接</li>
+<li>下列哪类不属于计算机系统的安全问题 政策安全类</li>
+<li>数据库设计人员和用户之间沟通信息的桥梁是 实体联系图</li>
+<li>并行数据库系统研究一直以三种并行计算结构为基础，分别是 <strong>共享内存结构、共享磁盘结构、无共享资源结构</strong></li>
+<li>RDBMS查询处理可以分为四个阶段，包括 <strong>查询分析、检查、优化、执行</strong></li>
+</ol>
+</blockquote>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
