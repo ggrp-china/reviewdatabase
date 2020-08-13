@@ -7,7 +7,7 @@
 这个提纲的基础由[vgg16](https://blog.csdn.net/rakish_wind)大佬提供，已获得转载和修改权
 
 # 3.进度
-因为有些地方写的不是很全，因此萌生了改进的想法，目前改正至第一章节
+因为有些地方写的不是很全，因此萌生了改进的想法，目前改正至第二章节
 
 [点我阅读](https://github.com/ggrp-china/reviewdatabase/blob/master/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0.md)
 
